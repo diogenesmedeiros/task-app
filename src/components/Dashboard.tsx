@@ -5,8 +5,6 @@ import {
   Box,
   Heading,
   Button,
-  Alert,
-  AlertIcon,
   VStack,
   HStack,
   Text,
@@ -347,7 +345,6 @@ const Dashboard: React.FC = () => {
         taskId={selectedTaskId}
         inputs={{ title: inputs.title }}
       />
-
       <EnterRoomModel
         isOpen={isModalEnterRoomOpen}
         onClose={() => setIsModalEnterRoomOpen(false)}
