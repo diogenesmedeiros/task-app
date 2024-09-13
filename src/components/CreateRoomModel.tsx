@@ -30,13 +30,7 @@ const CreateRoomModel: React.FC<CreateRoomModelProps> = ({ isOpen, onClose, onSu
                 <form onSubmit={onSubmit}>
                     <ModalBody>
                         <FormLabel htmlFor="code">Criar grupo</FormLabel>
-                        <Input
-                            id="password"
-                            name="password"
-                            value={inputs.password || ''}
-                            onChange={onInputChange}
-                            placeholder="Senha do grupo"
-                        />
+                        <Input id="password" name="password" value={inputs.password || ''} onChange={onInputChange} placeholder="Senha do grupo" />
                     </ModalBody>
                     <ModalFooter>
                         <Button colorScheme="blue" type="submit">

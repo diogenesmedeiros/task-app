@@ -245,9 +245,6 @@ const Dashboard: React.FC = () => {
       </HStack>
       <Flex direction="column" align="center" justify="center">
         <HStack spacing={4}>
-          <Button colorScheme="teal" size="lg" borderRadius="full" shadow="md" onClick={() => setIsModalOpen(true)}>
-            Adicionar Tarefa
-          </Button>
           {!groupId ? (
             <>
               <Button colorScheme="teal" size="lg" borderRadius="full" shadow="md" onClick={() => setIsModalEnterRoomOpen(true)}>
@@ -258,9 +255,14 @@ const Dashboard: React.FC = () => {
               </Button>
             </>
           ) : (
-            <Button colorScheme="red" size="lg" borderRadius="full" shadow="md" onClick={() => localStorage.removeItem('groupId')}>
-              Sair
-            </Button>
+            <>
+              <Button colorScheme="teal" size="lg" borderRadius="full" shadow="md" onClick={() => setIsModalOpen(true)}>
+                Adicionar Tarefa
+              </Button>
+              <Button colorScheme="red" size="lg" borderRadius="full" shadow="md" onClick={() => localStorage.removeItem('groupId')}>
+                Sair
+              </Button>
+            </>
           )}
         </HStack>
       </Flex>

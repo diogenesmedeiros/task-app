@@ -31,21 +31,9 @@ const EnterRoomModal: React.FC<EnterRoomModalProps> = ({ isOpen, onClose, onSubm
                 <form onSubmit={onSubmit}>
                     <ModalBody>
                         <FormLabel htmlFor="code">Código do Grupo</FormLabel>
-                        <Input
-                            id="code"
-                            name="code"
-                            value={inputs.code || ''}
-                            onChange={onInputChange}
-                            placeholder="Código do grupo"
-                        />
+                        <Input id="code" name="code" value={inputs.code || ''} onChange={onInputChange} placeholder="Código do grupo" />
                         <FormLabel htmlFor="code">Senha do grupo</FormLabel>
-                        <Input
-                            id="password"
-                            name="password"
-                            value={inputs.password || ''}
-                            onChange={onInputChange}
-                            placeholder="Senha do grupo"
-                        />
+                        <Input id="password" name="password" value={inputs.password || ''} onChange={onInputChange} placeholder="Senha do grupo" />
                     </ModalBody>
                     <ModalFooter>
                         <Button colorScheme="blue" type="submit">
