@@ -58,6 +58,8 @@ const Dashboard: React.FC = () => {
         duration: 3000,
         isClosable: true,
       });
+
+      setLoading(false)
     } finally {
       setLoading(false);
     }
