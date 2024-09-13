@@ -3,8 +3,9 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ChakraProvider } from '@chakra-ui/react';
 import { Analytics } from "@vercel/analytics/react"
 
-import Dashboard from './components/Dashboard';
-import Notfound from './components/Notfound';
+import Dashboard from './pages/Dashboard';
+import Notfound from './pages/Notfound';
+import PrivacyPolicy from './pages/PrivacyPolicy';
 
 const App: React.FC = () => {
   return (
@@ -13,6 +14,7 @@ const App: React.FC = () => {
       <Router>
         <Routes>
           <Route path='/' element={<Dashboard />} />
+          <Route path='/policy' element={<PrivacyPolicy />} />
           <Route path='*' element={<Notfound />} />
         </Routes>
       </Router>

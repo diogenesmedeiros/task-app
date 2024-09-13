@@ -1,63 +1,50 @@
-// TaskModal.tsx
 import React, { ChangeEvent, FormEvent } from 'react';
 import {
-  FormControl,
-  FormLabel,
-  Input,
-  FormHelperText,
-  Button,
   Modal,
   ModalOverlay,
   ModalContent,
   ModalHeader,
+  ModalCloseButton,
   ModalBody,
   ModalFooter,
+  Button,
+  Input,
+  useDisclosure,
+  FormLabel
 } from "@chakra-ui/react";
-import { Task } from '../types'; // Certifique-se de importar Task
 
 interface TaskModalProps {
   isOpen: boolean;
   onClose: () => void;
-  handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
-  taskId?: number; // Deve ser opcional ou incluir `undefined`
-  inputs: {
-    title: string;
-  };
+  onSubmit: (e: FormEvent<HTMLFormElement>) => void;
+  inputs: { [key: string]: string };
+  onInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
-const TaskModal: React.FC<TaskModalProps> = ({ isOpen, onClose, inputs, handleChange, handleSubmit, taskId }) => {
+const TaskModal: React.FC<TaskModalProps> = ({ isOpen, onClose, onSubmit, inputs, onInputChange }) => {
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>{taskId ? "Atualizar Tarefa" : "Adicionar Tarefa"}</ModalHeader>
-        <form onSubmit={handleSubmit}>
+        <ModalHeader>{inputs.id ? 'Atualizar Tarefa' : 'Adicionar Tarefa'}</ModalHeader>
+        <ModalCloseButton />
+        <form onSubmit={onSubmit}>
           <ModalBody>
-            <FormControl id="task-title" mb="4">
-              <FormLabel fontSize="lg" fontWeight="bold" color="teal.600">
-                Título da Tarefa
-              </FormLabel>
-              <Input
-                name="title"
-                type="text"
-                onChange={handleChange}
-                value={inputs.title || ''}
-                placeholder="Título da tarefa"
-                focusBorderColor="teal.400"
-                size="lg"
-                variant="filled"
-                bg="white"
-                _hover={{ bg: "gray.100" }}
-                color="gray.700"
-              />
-              <FormHelperText>Digite o título da tarefa.</FormHelperText>
-            </FormControl>
+            <FormLabel htmlFor="title">Título</FormLabel>
+            <Input
+              id="title"
+              name="title"
+              value={inputs.title || ''}
+              onChange={onInputChange}
+              placeholder="Título da tarefa"
+            />
           </ModalBody>
-
           <ModalFooter>
-            <Button colorScheme="teal" mr={2} type="submit">
-              {taskId ? "Atualizar Tarefa" : "Adicionar Tarefa"}
+            <Button colorScheme="blue" type="submit">
+              {inputs.id ? 'Atualizar' : 'Adicionar'}
+            </Button>
+            <Button variant="ghost" onClick={onClose} ml={3}>
+              Cancelar
             </Button>
           </ModalFooter>
         </form>

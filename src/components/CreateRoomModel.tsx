@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FormEvent, MouseEvent } from 'react';
+import React, { ChangeEvent, FormEvent } from 'react';
 import {
     Modal,
     ModalOverlay,
@@ -12,33 +12,24 @@ import {
     FormLabel
 } from "@chakra-ui/react";
 
-interface EnterRoomModalProps {
+interface CreateRoomModelProps {
     isOpen: boolean;
     onClose: () => void;
     onSubmit: (e: FormEvent<HTMLFormElement>) => void;
-    onCreate: (e: MouseEvent<HTMLButtonElement>) => void;
     inputs: { [key: string]: string };
     onInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
-const EnterRoomModal: React.FC<EnterRoomModalProps> = ({ isOpen, onClose, onSubmit, onCreate, inputs, onInputChange }) => {
+const CreateRoomModel: React.FC<CreateRoomModelProps> = ({ isOpen, onClose, onSubmit, inputs, onInputChange }) => {
     return (
         <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
             <ModalContent>
-                <ModalHeader>Entrar no Grupo</ModalHeader>
+                <ModalHeader>Criar Grupo</ModalHeader>
                 <ModalCloseButton />
                 <form onSubmit={onSubmit}>
                     <ModalBody>
-                        <FormLabel htmlFor="code">Código do Grupo</FormLabel>
-                        <Input
-                            id="code"
-                            name="code"
-                            value={inputs.code || ''}
-                            onChange={onInputChange}
-                            placeholder="Código do grupo"
-                        />
-                        <FormLabel htmlFor="code">Senha do grupo</FormLabel>
+                        <FormLabel htmlFor="code">Criar grupo</FormLabel>
                         <Input
                             id="password"
                             name="password"
@@ -49,10 +40,7 @@ const EnterRoomModal: React.FC<EnterRoomModalProps> = ({ isOpen, onClose, onSubm
                     </ModalBody>
                     <ModalFooter>
                         <Button colorScheme="blue" type="submit">
-                            Entrar
-                        </Button>
-                        <Button variant="ghost" onClick={onCreate} ml={3}>
-                            Criar Grupo
+                            Criar
                         </Button>
                         <Button variant="ghost" onClick={onClose} ml={3}>
                             Cancelar
@@ -64,4 +52,4 @@ const EnterRoomModal: React.FC<EnterRoomModalProps> = ({ isOpen, onClose, onSubm
     );
 };
 
-export default EnterRoomModal;
+export default CreateRoomModel;
